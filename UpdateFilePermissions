@@ -1,0 +1,22 @@
+# This is a proof of concept for testing purposes, and not to be considered production ready.
+# Please review code in its entirety before considering using it for your own purposes.
+
+# Import OS libary.
+import os
+
+# Define permissions level as a parameter.
+# 660 = 
+s = '660'
+
+# Set the file path.
+# Change this out for linking to Azure storage.
+file_path = r'C:\Users\Iqbal Khan\OneDrive - Microsoft\Desktop\Test File For Permissions.txt'
+
+# Run the permissions update function, pulling in the file_path and permission level parameters.
+os.chmod(file_path, int(s, base=8))
+
+# Check file for read access.
+os.access(file_path, os.R_OK)
+
+# Check file for write access.
+os.access(file_path, os.W_OK)
