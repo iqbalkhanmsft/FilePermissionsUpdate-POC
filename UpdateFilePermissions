@@ -5,7 +5,10 @@
 import os
 
 # Define permissions level as a parameter.
-# 660 = 
+# chmod permissions documentation: https://www.december.com/unix/ref/chmod.html
+# 660 = You and the defined group can read and write to the file.
+# 777 = Everybody can read, write to, or execute.
+
 s = '660'
 
 # Set the file path.
