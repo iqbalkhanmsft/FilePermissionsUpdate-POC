@@ -1,0 +1,17 @@
+# Get relevant Azure clients.
+from azure.storage.blob import BlobServiceClient, BlobClient, ContainerClient
+
+# Define connection string.
+conn_str = "DefaultEndpointsProtocol=https;AccountName=https://customerpocsstorage.blob.core.windows.net"
+
+# Set container name.
+container_name = "pocdata"
+
+# Give blob service client container permissions.
+blob_service_client = BlobServiceClient.from_connection_string(conn_str=conn_str)
+
+# Give blob client container and blob parameters to be written to.
+blob_client = blob_service_client.get_blob_client(container=container_name,blob="Test File For Permissions.txt")
+
+# Upload file back to Azure; re-write if exists.
+with open(r"C:\Users\Iqbal Khan\OneDrive - Microsoft\Desktop\Test File For PermissionsExport.txt","rb") as data: blob_client.upload_blob(data,overwrite=True)
