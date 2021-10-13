@@ -13,25 +13,17 @@ containername = "pocdata"
 # Store the file to be grabbed.
 blobname = "Test File For Permissions.txt"
 
-# Store the instance name, which is the account url _ the account key.
+# Store the instance name, which is the account url + the account key.
 blob_service_client_instance = BlobServiceClient(account_url = storageaccounturl, credential = storageaccountkey)
 
- vvvvvv
+# Provide the credentials to the blob client.
 blob_client_instance = blob_service_client_instance.get_blob_client(containername, blobname, snapshot=None)
 
+# Download the blob data.
 blob_data = blob_client_instance.download_blob()
 
+# Read the blob data into a dataframe.
 datatoexport = blob_data.readall()
 
-with open (r"C:\Users\Iqbal Khan\OneDrive - Microsoft\Desktop\Test File For PermissionsExport.txt", "wb") as binary_file: binary_file.write(datatoexport)
-
-from azure.storage.blob import BlobServiceClient
-storageaccounturl = "https://customerpocsstorage.blob.core.windows.net"
-storageaccountkey = "BlodtbT2+HdPgECZ8wBSqapbMy1A28SbPjndjYaW64nObYccMXnArIvJpp1T5TLJOzpggwO7+ltq0ILsfEEtEw=="
-containername = "pocdata"
-blobname = "Test File For Permissions.txt"
-blob_service_client_instance = BlobServiceClient(account_url = storageaccounturl, credential = storageaccountkey)
-blob_client_instance = blob_service_client_instance.get_blob_client(containername, blobname, snapshot=None)
-blob_data = blob_client_instance.download_blob()
-datatoexport = blob_data.readall()
+# Export the dataframe data to a file on the desktop.
 with open (r"C:\Users\Iqbal Khan\OneDrive - Microsoft\Desktop\Test File For PermissionsExport.txt", "wb") as binary_file: binary_file.write(datatoexport)
