@@ -1,0 +1,37 @@
+# Import the service client to connection to Azure Blob Storage. 
+from azure.storage.blob import BlobServiceClient
+
+# Store the account url.
+storageaccounturl = "https://customerpocsstorage.blob.core.windows.net"
+
+# Store the account key.
+storageaccountkey = "BlodtbT2+HdPgECZ8wBSqapbMy1A28SbPjndjYaW64nObYccMXnArIvJpp1T5TLJOzpggwO7+ltq0ILsfEEtEw=="
+
+# Store the container name.
+containername = "pocdata"
+
+# Store the file to be grabbed.
+blobname = "Test File For Permissions.txt"
+
+# Store the instance name, which is the account url _ the account key.
+blob_service_client_instance = BlobServiceClient(account_url = storageaccounturl, credential = storageaccountkey)
+
+ vvvvvv
+blob_client_instance = blob_service_client_instance.get_blob_client(containername, blobname, snapshot=None)
+
+blob_data = blob_client_instance.download_blob()
+
+datatoexport = blob_data.readall()
+
+with open (r"C:\Users\Iqbal Khan\OneDrive - Microsoft\Desktop\Test File For PermissionsExport.txt", "wb") as binary_file: binary_file.write(datatoexport)
+
+from azure.storage.blob import BlobServiceClient
+storageaccounturl = "https://customerpocsstorage.blob.core.windows.net"
+storageaccountkey = "BlodtbT2+HdPgECZ8wBSqapbMy1A28SbPjndjYaW64nObYccMXnArIvJpp1T5TLJOzpggwO7+ltq0ILsfEEtEw=="
+containername = "pocdata"
+blobname = "Test File For Permissions.txt"
+blob_service_client_instance = BlobServiceClient(account_url = storageaccounturl, credential = storageaccountkey)
+blob_client_instance = blob_service_client_instance.get_blob_client(containername, blobname, snapshot=None)
+blob_data = blob_client_instance.download_blob()
+datatoexport = blob_data.readall()
+with open (r"C:\Users\Iqbal Khan\OneDrive - Microsoft\Desktop\Test File For PermissionsExport.txt", "wb") as binary_file: binary_file.write(datatoexport)
